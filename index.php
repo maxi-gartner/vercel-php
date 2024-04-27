@@ -1,16 +1,11 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
-
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 define('SERVIDOR', $_ENV['SERVIDOR']);
 define('USUARIO', $_ENV['USUARIO']);
 define('PASSWORD', $_ENV['PASSWORD']);
 define('BD', $_ENV['BD']);
+
 
 $servidor = "mysql:dbname=" . BD . ";host=" . SERVIDOR;
 
@@ -33,6 +28,10 @@ spl_autoload_register(function ($clase) {
     }
 });
 
+$sql_usuarios = "SELECT us.id_usuario, us.nombres, us.apellido, us.email, rol.rol FROM tb_usuarios as us inner join tb_roles as rol on us.id_rol = rol.id_rol";
+$query_usuarios = $pdo->prepare($sql_usuarios);
+$query_usuarios->execute();
+$datos_usuarios = $query_usuarios->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>

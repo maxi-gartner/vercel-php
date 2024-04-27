@@ -1,16 +1,13 @@
 <?php
-$sql_usuarios = "SELECT us.id_usuario, us.nombres, us.apellido, us.email, rol.rol FROM tb_usuarios as us inner join tb_roles as rol on us.id_rol = rol.id_rol";
-$query_usuarios = $pdo->prepare($sql_usuarios);
-$query_usuarios->execute();
-$datos_usuarios = $query_usuarios->fetchAll(PDO::FETCH_ASSOC);
+$RUTA = __DIR__ . "/../"; // Obtener la ruta absoluta del directorio padre
+require_once($RUTA . 'vendor/autoload.php'); // Incluir el archivo usando la ruta absoluta
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable($RUTA); // Usar la misma ruta para cargar el archivo .env
+$dotenv->load();
 
 
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 $fechaHora = date('Y-m-d H:i:s');
-
-$URL = "http://localhost/VentasPHPyMySql/";
-
-
 ?>
-
-
