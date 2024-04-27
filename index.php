@@ -1,5 +1,12 @@
 <?php
-require_once('controladores/configuracion.php');
+
+use controladores\configuracion;
+
+spl_autoload_register(function ($clase) {
+    if(file_exists(str_replace('\\', '/', $clase) . '.php')){
+        require_once str_replace('\\', '/', $clase) . '.php';
+    }
+});
 
 $sql_usuarios = "SELECT us.id_usuario, us.nombres, us.apellido, us.email, rol.rol FROM tb_usuarios as us inner join tb_roles as rol on us.id_rol = rol.id_rol";
 $query_usuarios = $pdo->prepare($sql_usuarios);
