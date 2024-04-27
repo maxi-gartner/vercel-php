@@ -1,4 +1,4 @@
-<?php
+<?php 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hello world</h1>
-    <a href="../paginas/pagina1.php">Pagina 1</a>
-    <a href="../paginas/pagina2.php">Pagina 2</a>
-    <a href="../paginas/pagina3.php">Pagina 3</a>
+    <h1>Pagina 1</h1>
+    <a href="../api/index.php">Pagina Principal</a>
 </body>
 </html>
