@@ -21,15 +21,28 @@ try {
 }
 
 use controladores\configuracion;
-use controladores\login;
+use controladores\Login;
 
+// Autoload
 spl_autoload_register(function ($clase) {
     if(file_exists(str_replace('\\', '/', $clase) . '.php')){
         require_once str_replace('\\', '/', $clase) . '.php';
     }
 });
 
+$login = new Login();
+$datos_usuarios = $login->obtenerUsuarios();
+
+// Aquí puedes hacer lo que quieras con los datos de los usuarios
+// Por ejemplo, imprimirlos
+echo "<pre>";
+print_r($datos_usuarios);
+echo "</pre>";
+
 ?>
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
