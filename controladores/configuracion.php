@@ -1,4 +1,5 @@
 <?php
+
 $RUTA = __DIR__ . "/../"; // Obtener la ruta absoluta del directorio padre
 require_once($RUTA . 'vendor/autoload.php'); // Incluir el archivo usando la ruta absoluta
 
