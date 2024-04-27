@@ -9,6 +9,6 @@
 </head>
 <body>
     <h1>Pagina 1</h1>
-    <a href="../api/index.php">Pagina Principal</a>
+    <a href="../index.php">Pagina Principal</a>
 </body>
 </html>
