@@ -28,6 +28,7 @@ $sql_usuarios = "SELECT us.id_usuario, us.nombres, us.apellido, us.email, rol.ro
 $query_usuarios = $pdo->prepare($sql_usuarios);
 $query_usuarios->execute();
 $datos_usuarios = $query_usuarios->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +54,24 @@ $datos_usuarios = $query_usuarios->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </thead>
         <tbody>
-
+            <?php foreach ($datos_usuarios as $dato_usuario): ?>
+            <tr>
+                <td><?= ++$contador ?></td>
+                <td><?= ucfirst($dato_usuario['nombres']) ?></td>
+                <td><?= ucfirst($dato_usuario['apellido']) ?></td>
+                <td><?= $dato_usuario['email'] ?></td>
+                <td><?= ucfirst($dato_usuario['rol']) ?></td>
+                <td>
+                    <a href="<?= $URL ?>paginas_usuarios/details_user.php?id=<?= $dato_usuario['id_usuario'] ?>">Ver</a>
+                    <a href="<?= $URL ?>paginas_usuarios/update_user.php?id=<?= $dato_usuario['id_usuario'] ?>">Editar</a>
+                    <form action="<?= $URL ?>app/controllers/usuarios/delete_user_controller.php" method="post" style="display: inline;">
+                        <input type="hidden" name="id_usuario" value="<?= $dato_usuario['id_usuario'] ?>">
+                        <input type="hidden" name="nombre_usuario" value="<?= $dato_usuario['nombres'] ?>">
+                        <button type="submit">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </body>
